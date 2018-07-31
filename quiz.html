@@ -6,25 +6,26 @@
     <body class="background">
         <div class="container">
             <div> <!--Name-->
-                <h1 class="name-div text-center mt-5">Ben Fin</h1>
+                <h1 class="name-div text-center mt-5">Finjamin Dalgarn</h1>
             </div>
             <div class="text-center m-5"> <!--Picture-->
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tursiops_truncatus_01.jpg/2560px-Tursiops_truncatus_01.jpg" class="img-fluid img-thumbnail" style="height: 200px">
             </div>
             <div> <!--Progress bar-->
                 <div class="progress m-2">
-                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="question-div text-center m-3"> <!--Question-->
-                <h2>What market is Ben Fin in?</h2>
+                <h2>What market is Finjamin Dalgarn in?</h2>
             </div>
             <div class="mt-1 mb-5"> <!--Answers-->
-                <button type="button" class="btn btn-outline-light btn-block">Chicago</button>
-                <button type="button" class="btn btn-outline-light btn-block">Atlanta</button>
-                <button type="button" class="btn btn-outline-light btn-block">Dallas</button>
-                <button type="button" class="btn btn-outline-light btn-block">Seattle</button>
+                <button id="answer-1" type="button" class="btn btn-outline-light btn-block answer-button"></button>
+                <button id="answer-2" type="button" class="btn btn-outline-light btn-block answer-button"></button>
+                <button id="answer-3" type="button" class="btn btn-outline-light btn-block answer-button"></button>
+                <button id="answer-4" type="button" class="btn btn-outline-light btn-block answer-button"></button>
             </div>
         </div>
+        <script src="quiz.js"></script>
     </body>
 </html>
