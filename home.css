@@ -10,7 +10,7 @@
 .header-div h1{
     font-size: 100px;
     text-align: center;
-    color: orange;
+    color: #e9ecef;
     font-family: Georgia, Times, "Times New Roman"
     font-weight: bold;
     /* border: solid; */
@@ -19,7 +19,7 @@
 }
 
 .icon-div{
-    color: orange;
+    color:#ffab08;
     font-size: 200px;
     padding: 20px;
     /* border: solid; */
