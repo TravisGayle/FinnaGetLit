@@ -10,7 +10,9 @@
 .header-div h1{
     font-size: 100px;
     text-align: center;
-    color: white;
+    color: orange;
+    font-family: Georgia, Times, "Times New Roman"
+    font-weight: bold;
     /* border: solid; */
     /* border-color: black; */
 
@@ -24,6 +26,7 @@
     /* border-color: black; */
     text-align: center;
     padding: 20px;
+    
 }
 
 .main-div{
