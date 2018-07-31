@@ -14,3 +14,36 @@
 .progress-bar  {
     background-color: #ffab08;
 }
+
+.btn-custom{
+    background-color: green;
+    font-size: 100px;
+}
+
+
+.icon-div{
+    color:#ffab08;
+    font-size: 125px;
+    padding: 20px;
+    /* border: solid; */
+    /* border-color: black; */
+    text-align: center;
+    padding: 20px;
+    
+}
+
+.score0{
+    display: none;
+}
+.score1{
+    display: none;
+}
+.score2{
+    display: none;
+}
+.score3{
+    display: none;
+}
+.score4{
+    display: none;
+}
