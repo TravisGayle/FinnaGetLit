@@ -1,3 +1,16 @@
-.img-thumbnail {
-    max-height: 250px;
+.background {
+    background-color: orangered;
+}
+
+.name-div {
+    font-size: 60px;
+    color: #e9ecef;
+}
+
+.question-div {
+    color: #e9ecef;
+}
+
+.progress-bar  {
+    background-color: #ffab08;
 }
