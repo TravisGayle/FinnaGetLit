@@ -1,0 +1,39 @@
+.background {
+    background-color: orangered;
+}
+
+.header-div{
+
+    padding: 20px;
+}
+
+.header-div h1{
+    font-size: 100px;
+    text-align: center;
+    color: white;
+    /* border: solid; */
+    /* border-color: black; */
+
+}
+
+.icon-div{
+    color: orange;
+    font-size: 200px;
+    padding: 20px;
+    /* border: solid; */
+    /* border-color: black; */
+    text-align: center;
+    padding: 20px;
+}
+
+.main-div{
+
+    padding: 40px;
+    /* border: solid; */
+    /* border-color: black; */
+}
+
+.btn-homepage{
+    background-color: orange;
+    color: white;
+}
