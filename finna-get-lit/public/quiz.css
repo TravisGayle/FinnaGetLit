@@ -2,6 +2,10 @@
     background-color: orangered;
 }
 
+body > #root > div {
+    height: 100vh;
+}
+
 .name-div {
     font-size: 60px;
     color: #e9ecef;
@@ -13,11 +17,25 @@
 
 .progress-bar  {
     background-color: #ffab08;
+    width: 25%;
+    aria-valuenow: "25";
+    aria-valuemin: "0";
+    aria-valuemax: "100";
 }
 
 .btn-custom{
     background-color: #ffab08; 
     font-size: 60px;
+}
+
+.answer-btn {
+    background-color: transparent;
+    border: white solid 1px;
+}
+
+.img-custom {
+    height: 200px;
+    margin-bottom: 20px;
 }
 
 

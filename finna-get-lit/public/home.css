@@ -1,0 +1,47 @@
+.background {
+    background-color: orangered;
+}
+
+body > #root > div {
+    height: 100vh;
+}
+
+
+.header-div{
+
+    padding: 20px;
+}
+
+.header-div h1{
+    font-size: 100px;
+    text-align: center;
+    color: #e9ecef;
+    font-family: Georgia, Times, "Times New Roman"
+    font-weight: bold;
+    /* border: solid; */
+    /* border-color: black; */
+
+}
+
+.icon-div{
+    color:#ffab08;
+    font-size: 250px;
+    padding: 20px;
+    /* border: solid; */
+    /* border-color: black; */
+    text-align: center;
+    padding: 20px;
+    
+}
+
+.main-div{
+
+    padding: 40px;
+    /* border: solid; */
+    /* border-color: black; */
+}
+
+.btn-homepage{
+    background-color: orange;
+    color: white;
+}
