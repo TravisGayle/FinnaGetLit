@@ -23,14 +23,14 @@ body > #root > div {
 
 }
 
-.icon-div{
+.icon-divMain{
     color:#ffab08;
-    font-size: 150px;
-    padding: 20px;
+    font-size: 300px;
+    padding: 10px;
     /* border: solid; */
     /* border-color: black; */
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     
 }
 

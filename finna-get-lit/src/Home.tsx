@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Fire from './Fire.png'
+// import Fire from './Fire.png'
 
 // interface HomeInterface{
 
@@ -86,16 +86,24 @@ class Home extends React.Component<{}, IPageState> {
         <div className="row">
             <div className="col-md-2"/>
             <div id="flame1" className="icon-div col-md-2">
-                <img src={Fire}/>
+                {/* <img src={Fire}/> */}
+                <i className="fab fa-gripfire" />
+
             </div>
             <div id="flame2" className="icon-div col-md-2">
-                <img src={Fire} />
+                {/* <img src={Fire} /> */}
+                <i className="fab fa-gripfire" />
+
             </div>
             <div id="flame3" className="icon-div col-md-2">
-                <img src={Fire} />
+                {/* <img src={Fire} /> */}
+                <i className="fab fa-gripfire" />
+
             </div>
             <div id="flame4" className="icon-div col-md-2">
-                <img src={Fire} />
+                {/* <img src={Fire} /> */}
+                <i className="fab fa-gripfire" />
+
             </div>
 
             <div className="col-md-2"/>
@@ -120,7 +128,7 @@ class Home extends React.Component<{}, IPageState> {
                         </div>
                         <div className="row">
                             <div className="col-md-3" />
-                            <div className="icon-div col-md-6">
+                            <div className="icon-divMain col-md-6">
                                 <i className="fab fa-gripfire" />
                             </div>
                             <div className="col-md-3" />
