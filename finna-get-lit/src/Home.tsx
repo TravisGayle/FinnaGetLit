@@ -1,9 +1,19 @@
 import * as React from 'react';
-// import Fire from './Fire.png'
 
-// interface HomeInterface{
+import Cal from './Calamari.jpg'
+import Caesar from './Seahorse.jpg'
 
-// }
+import Coral from './Coralreef.jpg'
+import Dolph from './Dolphnyugen.jpg'
+import Fin from './Finjamin.jpg'
+import Finneus from './Finneus.jpg'
+import Jeff from './Jeff.jpg'
+import Lauryn from './Sharky.jpg'
+import Stin from './Stin.jpg'
+import Sue from './Sushi.jpg'
+
+
+
 
 interface IPageState {
     currentProfile: any;
@@ -12,8 +22,16 @@ interface IPageState {
 }
 
 class Home extends React.Component<{}, IPageState> {
-    public profiles = [{name: "Finjamin Dalgarn", office: "Chicago", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1"},
-                       {name: "Finneus Gayle", office: "Atlanta", interest: "Kevin Durant", almaMater: "Harvard", level: "M2"}];
+    public profiles = [{name: "Finjamin Dalgarn", office: "San Francisco", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1", imageSrc: Fin},
+                        {name: "Dolph Nguyen", office: "Seattle", interest: "Playing Guitar", almaMater: "TCU", level: "P1", imageSrc: Dolph},
+                        {name: "Lauryn Shark", office: "Dallas", interest: "Rolling Tides", almaMater: "Alabama", level: "V5", imageSrc: Lauryn},
+                        {name: "Coraline Reef", office: "New York", interest: "Cooking", almaMater: "Baylor", level: "C2", imageSrc: Coral},
+                        {name: "Stin Gray", office: "Chicago", interest: "Working Out", almaMater: "Kashi University", level: "A1", imageSrc: Stin},
+                        {name: "Jeff", office: "Philadelphia", interest: "Sixers Games", almaMater: "Temple University", level: "P2", imageSrc: Jeff},
+                        {name: "Cal O'Mari", office: "Los Angeles", interest: "Food", almaMater: "Texas A&M", level: "V5", imageSrc: Cal},
+                        {name: "Suzanne Shirole", office: "Houston", interest: "Traveling", almaMater: "University of Houston", level: "M3", imageSrc: Sue},
+                        {name: "Caesar Horse", office: "Washington D.C", interest: "Politics", almaMater: "BYU", level: "V2", imageSrc: Caesar},
+                       {name: "Finneus Gayle", office: "Atlanta", interest: "Kevin Durant", almaMater: "Harvard", level: "M2", imageSrc: Finneus}];
 
     constructor(p: {}) {
         super(p);
@@ -75,7 +93,7 @@ class Home extends React.Component<{}, IPageState> {
                         <h1 className="name-div text-center mt-5">{this.state.currentProfile.name}</h1>
                     </div>
                     <div className="text-center m-5">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tursiops_truncatus_01.jpg/2560px-Tursiops_truncatus_01.jpg" className="img-custom img-fluid img-thumbnail" />
+                        <img src={this.state.currentProfile.imageSrc} className="img-custom img-fluid img-thumbnail" />
                     </div>
 
                     <div className="progress m-2">
