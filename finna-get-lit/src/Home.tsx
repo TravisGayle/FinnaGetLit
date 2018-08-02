@@ -29,10 +29,9 @@ class Home extends React.Component<{}, IPageState> {
 
     public answers = ["", "", "", ""];
     public correctAnswer = "";
+    public selectedAnswer = "";
     public score = 0;
-    public buttonNumber = -1;
-    public selectedAnswer = "answer";
-    public message = "Hi";
+    
 
     public correctAnswerNumber = 0;
     public profiles = [{name: "Finjamin Dalgarn", office: "San Francisco", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1", imageSrc: Fin},
@@ -62,9 +61,9 @@ class Home extends React.Component<{}, IPageState> {
         this.goToResults = this.goToResults.bind(this);
         this.onQuestionAnswered = this.onQuestionAnswered.bind(this);
         this.onButton0Pressed = this.onButton0Pressed.bind(this);
-        this.onButton1Pressed = this.onButton0Pressed.bind(this);
-        this.onButton2Pressed = this.onButton0Pressed.bind(this);
-        this.onButton3Pressed = this.onButton0Pressed.bind(this);
+        this.onButton1Pressed = this.onButton1Pressed.bind(this);
+        this.onButton2Pressed = this.onButton2Pressed.bind(this);
+        this.onButton3Pressed = this.onButton3Pressed.bind(this);
 
         this.constructAnswerLists();
     }
@@ -95,31 +94,24 @@ class Home extends React.Component<{}, IPageState> {
         if (buttonNum === this.correctAnswerNumber) {
             this.score += 1;
         }
-        this.buttonNumber = buttonNum;
         this.setState({questionsAnswered: this.state.questionsAnswered + 1});
     }
 
     public onButton0Pressed() {
-        this.onQuestionAnswered(0);
         this.selectedAnswer = this.answers[0];
-        this.message = "BUTTON 0";
+        this.onQuestionAnswered(0);
     }
     public onButton1Pressed() {
-        this.onQuestionAnswered(1);
         this.selectedAnswer = this.answers[1];
-        this.message = "BUTTON 1";
-
+        this.onQuestionAnswered(1);
     }
     public onButton2Pressed() {
-        this.onQuestionAnswered(2);
         this.selectedAnswer = this.answers[2];
-        this.message = "BUTTON 2";
-
+        this.onQuestionAnswered(2);
     }
     public onButton3Pressed() {
-        this.onQuestionAnswered(3);
         this.selectedAnswer = this.answers[3];
-        this.message = "BUTTON 3";
+        this.onQuestionAnswered(3);
     }
 
     public clearAnswers() {
@@ -257,7 +249,6 @@ class Home extends React.Component<{}, IPageState> {
             progressClass = "progress-bar progress-100-percent";
         }
 
-        this.clearAnswers();
         this.fillInAnswers();
 
         return (
@@ -274,12 +265,6 @@ class Home extends React.Component<{}, IPageState> {
                         <div id="progress-bar" className={progressClass} role="progressbar" />
                         {/* <ProgressBar now={60} />; */}
                     </div>
-                    <div>score: {this.score}</div>
-                    <div>correct answer number: {this.correctAnswerNumber}</div>
-                    <div>correct answer: {this.correctAnswer}</div>
-                    <div>selected answer: {this.selectedAnswer}</div>
-                    <div>button number: {this.buttonNumber}</div>
-                    <div>{this.message}</div>
 
                     <div className="question-div text-center m-3">
                         <h2>{questionBeingAsked}</h2>
