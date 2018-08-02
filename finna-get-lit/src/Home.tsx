@@ -12,19 +12,48 @@ interface IPageState {
 }
 
 class Home extends React.Component<{}, IPageState> {
-    public profiles = [{name: "Finjamin Dalgarn", office: "Chicago", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1"},
-                       {name: "Finneus Gayle", office: "Atlanta", interest: "Kevin Durant", almaMater: "Harvard", level: "M2"}];
+    public profiles = [{name: "Finjamin Dalgarn", office: "San Francisco", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1"},
+    {name: "Dolph Nguyen", office: "Seattle", interest: "Playing Guitar", almaMater: "TCU", level: "P1"},
+    {name: "Lauryn Shark", office: "Dallas", interest: "Rolling Tides", almaMater: "Alabama", level: "V5"},
+    {name: "Coraline Reef", office: "New York", interest: "Cooking", almaMater: "Baylor", level: "C2"},
+    {name: "Stin Gray", office: "Chicago", interest: "Working Out", almaMater: "Kashi University", level: "A1"},
+    {name: "Jeff", office: "Philadelphia", interest: "Sixers Games", almaMater: "Temple University", level: "P2"},
+    {name: "Cal O'Mari", office: "Los Angeles", interest: "Food", almaMater: "Texas A&M", level: "V5"},
+    {name: "Suzanne Shirole", office: "Houston", interest: "Traveling", almaMater: "University of Houston", level: "M3"},
+    {name: "Caesar Horse", office: "Washington D.C", interest: "Politics", almaMater: "BYU", level: "V2"},
+   {name: "Finneus Gayle", office: "Atlanta", interest: "Kevin Durant", almaMater: "Harvard", level: "M2"}];
+
+    public offices: any[] = [];
+    public interests: any[]  = [];
+    public almaMaters: any[]  = [];
+    public levels: any[]  = [];
+
+    public answers = ["", "", "", ""];
+    public correctAnswer = "";
+
+    public correctAnswerNumber = 0;
 
     constructor(p: {}) {
         super(p);
         this.state = {
-            currentProfile:this.profiles[0],
+            currentProfile: this.profiles[0],
             page: "home",
             questionsAnswered: 0,
         }
         this.goToQuiz = this.goToQuiz.bind(this);
         this.goToResults = this.goToResults.bind(this);
         this.onQuestionAnswered = this.onQuestionAnswered.bind(this);
+
+        this.constructAnswerLists();
+    }
+
+    public constructAnswerLists() {
+        this.profiles.forEach(profile => {
+            this.offices.push(profile.office);
+            this.interests.push(profile.interest);
+            this.almaMaters.push(profile.almaMater);
+            this.levels.push(profile.level);
+        });
     }
 
     public chooseRandomProfile() {
@@ -41,7 +70,115 @@ class Home extends React.Component<{}, IPageState> {
     }
 
     public onQuestionAnswered() {
-        this.setState({questionsAnswered: this.state.questionsAnswered + 1})
+        this.setState({questionsAnswered: this.state.questionsAnswered + 1});
+    }
+
+    public clearAnswers() {
+        this.answers = ["", "", "", ""];
+    }
+
+    public isItemInList(item: any, list: any[]) {
+        for (const listItem of list) {
+            if (item === listItem) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public fillInAnswers() {
+        if (this.state.questionsAnswered === 0) {
+            this.fillInCorrectAnswer();
+
+            const correctAnswer = this.correctAnswer;
+            const possibleAnswers = this.offices;
+            possibleAnswers.splice(possibleAnswers.findIndex(answer => {
+                return answer === correctAnswer;
+            }), 1);
+            const shuffledAnswers = possibleAnswers.sort(() => .5 - Math.random());
+            let j = 0;
+
+            for (let index = 0; index < this.answers.length; index++) {
+                if (index !== this.correctAnswerNumber) {
+                    this.answers[index] = shuffledAnswers[j];
+                    j++;
+                }
+            }
+        }
+        else if (this.state.questionsAnswered === 1) {
+            this.fillInCorrectAnswer();
+
+            const correctAnswer = this.correctAnswer;
+            const possibleAnswers = this.interests;
+            possibleAnswers.splice(possibleAnswers.findIndex(answer => {
+                return answer === correctAnswer;
+            }), 1);
+            const shuffledAnswers = possibleAnswers.sort(() => .5 - Math.random());
+            let j = 0;
+
+            for (let index = 0; index < this.answers.length; index++) {
+                if (index !== this.correctAnswerNumber) {
+                    this.answers[index] = shuffledAnswers[j];
+                    j++;
+                }
+            }
+        }
+        else if (this.state.questionsAnswered === 2) {
+            this.fillInCorrectAnswer();
+
+            const correctAnswer = this.correctAnswer;
+            const possibleAnswers = this.almaMaters;
+            possibleAnswers.splice(possibleAnswers.findIndex(answer => {
+                return answer === correctAnswer;
+            }), 1);
+            const shuffledAnswers = possibleAnswers.sort(() => .5 - Math.random());
+            let j = 0;
+
+            for (let index = 0; index < this.answers.length; index++) {
+                if (index !== this.correctAnswerNumber) {
+                    this.answers[index] = shuffledAnswers[j];
+                    j++;
+                }
+            }
+        }
+        else if (this.state.questionsAnswered === 3) {
+            this.fillInCorrectAnswer();
+
+            const correctAnswer = this.correctAnswer;
+            const possibleAnswers = this.levels;
+            possibleAnswers.splice(possibleAnswers.findIndex(answer => {
+                return answer === correctAnswer;
+            }), 1);
+            const shuffledAnswers = possibleAnswers.sort(() => .5 - Math.random());
+            let j = 0;
+
+            for (let index = 0; index < this.answers.length; index++) {
+                if (index !== this.correctAnswerNumber) {
+                    this.answers[index] = shuffledAnswers[j];
+                    j++;
+                }
+            }
+        }
+    }
+
+    public fillInCorrectAnswer() {
+        this.correctAnswerNumber = Math.floor(Math.random() * 4);
+        
+        if (this.state.questionsAnswered === 0) {
+            this.correctAnswer = this.state.currentProfile.office;
+            this.answers[this.correctAnswerNumber] = this.correctAnswer;
+        }
+        else if (this.state.questionsAnswered === 1) {
+            this.answers[this.correctAnswerNumber] = this.state.currentProfile.interest;
+        }
+        else if (this.state.questionsAnswered === 2) {
+            this.answers[this.correctAnswerNumber] = this.state.currentProfile.almaMater;
+        }
+        else if (this.state.questionsAnswered === 3) {
+            this.answers[this.correctAnswerNumber] = this.state.currentProfile.level;
+        }        
+
     }
 
     public renderQuiz() {
@@ -53,7 +190,7 @@ class Home extends React.Component<{}, IPageState> {
             progressClass = "progress-bar";
             questionBeingAsked = questions[0];
         }
-        if (this.state.questionsAnswered === 1) {
+        else if (this.state.questionsAnswered === 1) {
             progressClass = "progress-bar progress-25-percent";
             questionBeingAsked = questions[1];
         }
@@ -68,6 +205,10 @@ class Home extends React.Component<{}, IPageState> {
         else if (this.state.questionsAnswered === 4) {
             progressClass = "progress-bar progress-100-percent";
         }
+
+        this.clearAnswers();
+        this.fillInAnswers();
+
         return (
             <div className="App background">
                 <div className="container">
@@ -88,10 +229,10 @@ class Home extends React.Component<{}, IPageState> {
                         <h2>{questionBeingAsked}</h2>
                     </div>
                     <div className="mt-1 mb-5">
-                        <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 1 </button>
-                        <button id="answer-2" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 2 </button>
-                        <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 3 </button>
-                        <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 4 </button>
+                        <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[0]}</button>
+                        <button id="answer-2" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[1]}</button>
+                        <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[2]}</button>
+                        <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[3]}</button>
                     </div>
                     <div className="text-right">
                         <button type="button" className="btn btn-outline-light" onClick={this.goToResults}> NEXT <i className="fas fa-caret-right"/></button>
@@ -166,7 +307,7 @@ class Home extends React.Component<{}, IPageState> {
                 <div className="App background">
                     <div className="container">
                         <div className="header-div">
-                            <h1>Welcome, Ben! </h1>
+                            <h1>Finna Get Lit! </h1>
                         </div>
                         <div className="row">
                             <div className="col-md-3" />
