@@ -13,10 +13,25 @@ body > #root > div {
 
 #progress-bar  {
     background-color: #ffab08;
-    width: 25%;
     aria-valuenow: "25";
     aria-valuemin: "0";
     aria-valuemax: "100";
+}
+
+.progress-25-percent {
+    width: 25%;
+}
+
+.progress-50-percent {
+    width: 50%;
+}
+
+.progress-75-percent {
+    width: 75%;
+}
+
+.progress-100-percent {
+    width: 100%;
 }
 
 .btn-custom{

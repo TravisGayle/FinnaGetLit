@@ -7,16 +7,20 @@ import * as React from 'react';
 
 interface IPageState {
     page: string;
+    questionsAnswered: number;
+    // questions: Array<string>;
 }
 
 class Home extends React.Component<{}, IPageState> {
     constructor(p: {}) {
         super(p);
         this.state = {
-            page: "home"
+            page: "home",
+            questionsAnswered: 0,
         }
         this.goToQuiz = this.goToQuiz.bind(this);
         this.goToResults = this.goToResults.bind(this);
+        this.onQuestionAnswered = this.onQuestionAnswered.bind(this);
     }
 
     public goToQuiz() {
@@ -26,7 +30,34 @@ class Home extends React.Component<{}, IPageState> {
         this.setState({page: "results"});
     }
 
+    public onQuestionAnswered() {
+        this.setState({questionsAnswered: this.state.questionsAnswered + 1})
+    }
+
     public renderQuiz() {
+        let progressClass = "";
+        let questionBeingAsked = "";
+        const questions = ["What home office is this Fin in?", "What is this Fin interested in?", "What is this Fin's alma mater?", "What level is this Fin?"];
+
+        if (this.state.questionsAnswered === 0) {
+            progressClass = "progress-bar";
+            questionBeingAsked = questions[0];
+        }
+        if (this.state.questionsAnswered === 1) {
+            progressClass = "progress-bar progress-25-percent";
+            questionBeingAsked = questions[1];
+        }
+        else if (this.state.questionsAnswered === 2) {
+            progressClass = "progress-bar progress-50-percent";
+            questionBeingAsked = questions[2];
+        }
+        else if (this.state.questionsAnswered === 3) {
+            progressClass = "progress-bar progress-75-percent";
+            questionBeingAsked = questions[3];
+        }
+        else if (this.state.questionsAnswered === 4) {
+            progressClass = "progress-bar progress-100-percent";
+        }
         return (
             <div className="App background">
                 <div className="container">
@@ -38,19 +69,19 @@ class Home extends React.Component<{}, IPageState> {
                     </div>
 
                     <div className="progress m-2">
-                        <div id="progress-bar" className="progress-bar" role="progressbar" />
+                        <div id="progress-bar" className={progressClass} role="progressbar" />
                         {/* <ProgressBar now={60} />; */}
                     </div>
 
 
                     <div className="question-div text-center m-3">
-                        <h2>What market is Finjamin Dalgarn in?</h2>
+                        <h2>{questionBeingAsked}</h2>
                     </div>
                     <div className="mt-1 mb-5">
-                        <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" > Choice 1 </button>
-                        <button id="answer-2" type="button" className="btn btn-outline-light btn-block answer-button" > Choice 2 </button>
-                        <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" > Choice 3 </button>
-                        <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" > Choice 4 </button>
+                        <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 1 </button>
+                        <button id="answer-2" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 2 </button>
+                        <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 3 </button>
+                        <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}> Choice 4 </button>
                     </div>
                     <div className="text-right">
                         <button type="button" className="btn btn-outline-light" onClick={this.goToResults}> NEXT <i className="fas fa-caret-right"/></button>
@@ -62,6 +93,7 @@ class Home extends React.Component<{}, IPageState> {
     }
 
     public renderResults(){
+        const progressClass = "progress-bar progress-100-percent";
         return (
             <div className = "App background">
                 <div className="container">
@@ -74,7 +106,7 @@ class Home extends React.Component<{}, IPageState> {
         <div>
     
         <div className="progress m-2">
-                        <div id="progress-bar" className="progress-bar" role="progressbar" />
+                        <div id="progress-bar" className={progressClass} role="progressbar" />
                         {/* <ProgressBar now={60} />; */}
                     </div>
     
@@ -145,7 +177,7 @@ class Home extends React.Component<{}, IPageState> {
                 </div>
             )
         }
-        else if (this.state.page === "quiz") {
+        else if (this.state.page === "quiz" && this.state.questionsAnswered < 4) {
             return this.renderQuiz();
         }
         else{
