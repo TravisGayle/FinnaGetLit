@@ -297,14 +297,14 @@ class Home extends React.Component<{}, IPageState> {
             this.flame3Classes += " invisible-flame";
         }
         if (this.score < 4) {
-            this.flame2Classes += " invisible-flame";
+            this.flame4Classes += " invisible-flame";
         }
 
         return (
             <div className = "App background">
                 <div className="container">
         <div>
-            <h1 className="name-div text-center mt-5">Ben Fin</h1>
+            <h1 className="name-div text-center mt-5">{this.state.currentProfile.name}</h1>
         </div>
         <div className="text-center m-5">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tursiops_truncatus_01.jpg/2560px-Tursiops_truncatus_01.jpg" className="img-custom img-fluid img-thumbnail" />
