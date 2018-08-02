@@ -6,15 +6,19 @@ import * as React from 'react';
 // }
 
 interface IPageState {
+    currentProfile: any;
     page: string;
     questionsAnswered: number;
-    // questions: Array<string>;
 }
 
 class Home extends React.Component<{}, IPageState> {
+    public profiles = [{name: "Finjamin Dalgarn", office: "Chicago", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1"},
+                       {name: "Finneus Gayle", office: "Atlanta", interest: "Kevin Durant", almaMater: "Harvard", level: "M2"}];
+
     constructor(p: {}) {
         super(p);
         this.state = {
+            currentProfile:this.profiles[0],
             page: "home",
             questionsAnswered: 0,
         }
@@ -23,7 +27,13 @@ class Home extends React.Component<{}, IPageState> {
         this.onQuestionAnswered = this.onQuestionAnswered.bind(this);
     }
 
+    public chooseRandomProfile() {
+        const profileNumber = Math.floor(Math.random() * this.profiles.length);
+        this.setState({currentProfile: this.profiles[profileNumber]});
+    }
+
     public goToQuiz() {
+        this.chooseRandomProfile();
         this.setState({page: "quiz"});
     }
     public goToResults() {
@@ -62,7 +72,7 @@ class Home extends React.Component<{}, IPageState> {
             <div className="App background">
                 <div className="container">
                     <div>
-                        <h1 className="name-div text-center mt-5">Finjamin Dalgarn</h1>
+                        <h1 className="name-div text-center mt-5">{this.state.currentProfile.name}</h1>
                     </div>
                     <div className="text-center m-5">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tursiops_truncatus_01.jpg/2560px-Tursiops_truncatus_01.jpg" className="img-custom img-fluid img-thumbnail" />
