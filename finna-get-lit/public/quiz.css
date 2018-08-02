@@ -18,6 +18,10 @@ body > #root > div {
     aria-valuemax: "100";
 }
 
+.invisible-flame {
+    display: none;
+}
+
 .progress-25-percent {
     width: 25%;
 }

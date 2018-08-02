@@ -29,6 +29,10 @@ class Home extends React.Component<{}, IPageState> {
 
     public answers = ["", "", "", ""];
     public correctAnswer = "";
+    public score = 0;
+    public buttonNumber = -1;
+    public selectedAnswer = "answer";
+    public message = "Hi";
 
     public correctAnswerNumber = 0;
     public profiles = [{name: "Finjamin Dalgarn", office: "San Francisco", interest: "Learning JS Frameworks", almaMater: "Notre Dame", level: "C1", imageSrc: Fin},
@@ -42,6 +46,11 @@ class Home extends React.Component<{}, IPageState> {
                         {name: "Caesar Horse", office: "Washington D.C", interest: "Politics", almaMater: "BYU", level: "V2", imageSrc: Caesar},
                        {name: "Finneus Gayle", office: "Atlanta", interest: "Kevin Durant", almaMater: "Harvard", level: "M2", imageSrc: Finneus}];
 
+    public flame1Classes = "icon-div col-md-2";
+    public flame2Classes = "icon-div col-md-2";
+    public flame3Classes = "icon-div col-md-2";
+    public flame4Classes = "icon-div col-md-2";
+
     constructor(p: {}) {
         super(p);
         this.state = {
@@ -52,6 +61,10 @@ class Home extends React.Component<{}, IPageState> {
         this.goToQuiz = this.goToQuiz.bind(this);
         this.goToResults = this.goToResults.bind(this);
         this.onQuestionAnswered = this.onQuestionAnswered.bind(this);
+        this.onButton0Pressed = this.onButton0Pressed.bind(this);
+        this.onButton1Pressed = this.onButton0Pressed.bind(this);
+        this.onButton2Pressed = this.onButton0Pressed.bind(this);
+        this.onButton3Pressed = this.onButton0Pressed.bind(this);
 
         this.constructAnswerLists();
     }
@@ -78,8 +91,35 @@ class Home extends React.Component<{}, IPageState> {
         this.setState({page: "results"});
     }
 
-    public onQuestionAnswered() {
+    public onQuestionAnswered(buttonNum: number) {
+        if (buttonNum === this.correctAnswerNumber) {
+            this.score += 1;
+        }
+        this.buttonNumber = buttonNum;
         this.setState({questionsAnswered: this.state.questionsAnswered + 1});
+    }
+
+    public onButton0Pressed() {
+        this.onQuestionAnswered(0);
+        this.selectedAnswer = this.answers[0];
+        this.message = "BUTTON 0";
+    }
+    public onButton1Pressed() {
+        this.onQuestionAnswered(1);
+        this.selectedAnswer = this.answers[1];
+        this.message = "BUTTON 1";
+
+    }
+    public onButton2Pressed() {
+        this.onQuestionAnswered(2);
+        this.selectedAnswer = this.answers[2];
+        this.message = "BUTTON 2";
+
+    }
+    public onButton3Pressed() {
+        this.onQuestionAnswered(3);
+        this.selectedAnswer = this.answers[3];
+        this.message = "BUTTON 3";
     }
 
     public clearAnswers() {
@@ -179,15 +219,17 @@ class Home extends React.Component<{}, IPageState> {
             this.answers[this.correctAnswerNumber] = this.correctAnswer;
         }
         else if (this.state.questionsAnswered === 1) {
-            this.answers[this.correctAnswerNumber] = this.state.currentProfile.interest;
+            this.correctAnswer = this.state.currentProfile.interest;
+            this.answers[this.correctAnswerNumber] = this.correctAnswer;
         }
         else if (this.state.questionsAnswered === 2) {
-            this.answers[this.correctAnswerNumber] = this.state.currentProfile.almaMater;
+            this.correctAnswer = this.state.currentProfile.almaMater;
+            this.answers[this.correctAnswerNumber] = this.correctAnswer;
         }
         else if (this.state.questionsAnswered === 3) {
-            this.answers[this.correctAnswerNumber] = this.state.currentProfile.level;
+            this.correctAnswer = this.state.currentProfile.level;
+            this.answers[this.correctAnswerNumber] = this.correctAnswer;
         }        
-
     }
 
     public renderQuiz() {
@@ -232,16 +274,21 @@ class Home extends React.Component<{}, IPageState> {
                         <div id="progress-bar" className={progressClass} role="progressbar" />
                         {/* <ProgressBar now={60} />; */}
                     </div>
-
+                    <div>score: {this.score}</div>
+                    <div>correct answer number: {this.correctAnswerNumber}</div>
+                    <div>correct answer: {this.correctAnswer}</div>
+                    <div>selected answer: {this.selectedAnswer}</div>
+                    <div>button number: {this.buttonNumber}</div>
+                    <div>{this.message}</div>
 
                     <div className="question-div text-center m-3">
                         <h2>{questionBeingAsked}</h2>
                     </div>
                     <div className="mt-1 mb-5">
-                        <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[0]}</button>
-                        <button id="answer-2" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[1]}</button>
-                        <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[2]}</button>
-                        <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onQuestionAnswered}>{this.answers[3]}</button>
+                        <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton0Pressed}>{this.answers[0]}</button>
+                        <button id="answer-2" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton1Pressed}>{this.answers[1]}</button>
+                        <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton2Pressed}>{this.answers[2]}</button>
+                        <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton3Pressed}>{this.answers[3]}</button>
                     </div>
                     <div className="text-right">
                         <button type="button" className="btn btn-outline-light" onClick={this.goToResults}> NEXT <i className="fas fa-caret-right"/></button>
@@ -254,6 +301,20 @@ class Home extends React.Component<{}, IPageState> {
 
     public renderResults(){
         const progressClass = "progress-bar progress-100-percent";
+        
+        if (this.score < 1) {
+            this.flame1Classes += " invisible-flame";
+        }
+        if (this.score < 2) {
+            this.flame2Classes += " invisible-flame";
+        }
+        if (this.score < 3) {
+            this.flame3Classes += " invisible-flame";
+        }
+        if (this.score < 4) {
+            this.flame2Classes += " invisible-flame";
+        }
+
         return (
             <div className = "App background">
                 <div className="container">
@@ -273,26 +334,26 @@ class Home extends React.Component<{}, IPageState> {
         </div>
         <div className="question-div text-center m-3">
          
-            <h1>Final Lit Score:</h1>
+            <h1>Final Lit Score: {this.score}</h1>
         </div>
         <div className="row">
             <div className="col-md-2"/>
-            <div id="flame1" className="icon-div col-md-2">
+            <div id="flame1" className={this.flame1Classes}>
                 {/* <img src={Fire}/> */}
                 <i className="fab fa-gripfire" />
 
             </div>
-            <div id="flame2" className="icon-div col-md-2">
+            <div id="flame2" className={this.flame2Classes}>
                 {/* <img src={Fire} /> */}
                 <i className="fab fa-gripfire" />
 
             </div>
-            <div id="flame3" className="icon-div col-md-2">
+            <div id="flame3" className={this.flame3Classes}>
                 {/* <img src={Fire} /> */}
                 <i className="fab fa-gripfire" />
 
             </div>
-            <div id="flame4" className="icon-div col-md-2">
+            <div id="flame4" className={this.flame4Classes}>
                 {/* <img src={Fire} /> */}
                 <i className="fab fa-gripfire" />
 
