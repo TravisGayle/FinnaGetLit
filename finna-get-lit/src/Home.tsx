@@ -365,7 +365,7 @@ class Home extends React.Component<{}, IPageState> {
                 <div className="App background">
                     <div className="container">
                         <div className="header-div">
-                            <h1>Finna Get Lit! </h1>
+                            <h1>Finna Get Lit</h1>
                         </div>
                         <div className="row icon-div"> 
                             <div className="col-md-3" />
