@@ -303,7 +303,7 @@ class Home extends React.Component<{}, IPageState> {
         return (
             <div className = "App background">
                 <div className="container">
-                <div>
+                     <div>
                         <h1 className="name-div text-center mt-5">{this.state.currentProfile.name}</h1>
                     </div>
                     <div className="text-center m-5">
