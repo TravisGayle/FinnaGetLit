@@ -356,6 +356,7 @@ class Home extends React.Component<{}, IPageState> {
     }
 
     public goToHome() {
+        this.score = 0;
         this.setState({questionsAnswered: 0, page: "home"});
     }
 
