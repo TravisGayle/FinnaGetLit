@@ -15,9 +15,8 @@ body > #root > div {
 .header-div h1{
     font-size: 100px;
     text-align: center;
-    color: #e9ecef;
-    font-family: Georgia, Times, "Times New Roman"
-    font-weight: bold;
+    color: white;
+    /* font-family: Georgia, Times, "Times New Roman"; */
     /* border: solid; */
     /* border-color: black; */
 
