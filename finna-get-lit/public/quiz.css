@@ -4,11 +4,15 @@ body > #root > div {
 
 .name-div {
     font-size: 60px;
-    color: #e9ecef;
+    color: white;
 }
 
 .question-div {
-    color: #e9ecef;
+    color: white;
+}
+
+.question-txt {
+    color: white;
 }
 
 #progress-bar  {
@@ -21,6 +25,21 @@ body > #root > div {
 .invisible-flame {
     display: none;
 }
+
+.icon-div {
+    position: relative;
+    top: 0px;
+}
+
+.quiz-button {
+    height: 60px;
+    width: auto;
+}
+
+.quiz-button-text {
+    display: table-cell;
+    vertical-align: middle;
+} 
 
 .progress-25-percent {
     width: 25%;

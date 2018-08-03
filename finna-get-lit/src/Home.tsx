@@ -64,6 +64,7 @@ class Home extends React.Component<{}, IPageState> {
         this.onButton1Pressed = this.onButton1Pressed.bind(this);
         this.onButton2Pressed = this.onButton2Pressed.bind(this);
         this.onButton3Pressed = this.onButton3Pressed.bind(this);
+        this.goToHome = this.goToHome.bind(this);
 
         this.constructAnswerLists();
     }
@@ -267,7 +268,7 @@ class Home extends React.Component<{}, IPageState> {
                     </div>
 
                     <div className="question-div text-center m-3">
-                        <h2>{questionBeingAsked}</h2>
+                        <h2 className="question-txt">{questionBeingAsked}</h2>
                     </div>
                     <div className="mt-1 mb-5">
                         <button id="answer-1" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton0Pressed}>{this.answers[0]}</button>
@@ -317,8 +318,7 @@ class Home extends React.Component<{}, IPageState> {
                     </div>
     
         </div>
-        <div className="question-div text-center m-3">
-         
+        <div className="question-div text-center mt-3">
             <h1>Final Lit Score: {this.score}</h1>
         </div>
         <div className="row">
@@ -346,14 +346,17 @@ class Home extends React.Component<{}, IPageState> {
 
             <div className="col-md-2"/>
         </div>
-        <div className="text-center m-5">
-            <a type="button" className="btn btn-custom btn-lg" href="home.html"> TAKE ME HOME <i className="fas fa-caret-right"/></a>
-
+        <div className="text-center mb-5 mt-2">
+            <button type="button" className="btn btn-outline-light quiz-button" onClick={this.goToHome}><h3 className="quiz-button-text">Take Me Home</h3></button>
         </div>
     </div>
     </div>
     
         );
+    }
+
+    public goToHome() {
+        this.setState({questionsAnswered: 0, page: "home"});
     }
 
     public render() {
@@ -364,7 +367,7 @@ class Home extends React.Component<{}, IPageState> {
                         <div className="header-div">
                             <h1>Finna Get Lit! </h1>
                         </div>
-                        <div className="row"> 
+                        <div className="row icon-div"> 
                             <div className="col-md-3" />
                             <div className="icon-divMain col-md-6">
                                 <i className="fab fa-gripfire" />
@@ -374,8 +377,7 @@ class Home extends React.Component<{}, IPageState> {
                         <div className="row">
                             <div className="col-md-3" />
                             <div className="main-div col-md-6 ">
-                                <a type="button" className="btn btn-default btn-lg btn-block" onClick={this.goToQuiz}>Take Quiz</a>
-                                {/* <a type="button" className="btn btn-default btn-lg btn-block">View Stats</a> */}
+                                <button type="button" className="btn btn-outline-light quiz-button" onClick={this.goToQuiz}><h3 className="quiz-button-text">Take Quiz</h3></button>
                             </div>
                             <div className="col-md-3" />
                         </div>
