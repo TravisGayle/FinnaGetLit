@@ -275,10 +275,10 @@ class Home extends React.Component<{}, IPageState> {
                         <button id="answer-3" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton2Pressed}>{this.answers[2]}</button>
                         <button id="answer-4" type="button" className="btn btn-outline-light btn-block answer-button" onClick={this.onButton3Pressed}>{this.answers[3]}</button>
                     </div>
-                    <div className="text-right">
-                        <button type="button" className="btn btn-outline-light" onClick={this.goToResults}> NEXT <i className="fas fa-caret-right"/></button>
+                    {/* <div className="text-right">
+                        <button type="button" className="btn btn-outline-light" onClick={this.goToResults}> FINISH <i className="fas fa-caret-right"/></button>
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
@@ -297,17 +297,17 @@ class Home extends React.Component<{}, IPageState> {
             this.flame3Classes += " invisible-flame";
         }
         if (this.score < 4) {
-            this.flame2Classes += " invisible-flame";
+            this.flame4Classes += " invisible-flame";
         }
 
         return (
             <div className = "App background">
                 <div className="container">
-        <div>
-            <h1 className="name-div text-center mt-5">Ben Fin</h1>
-        </div>
-        <div className="text-center m-5">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tursiops_truncatus_01.jpg/2560px-Tursiops_truncatus_01.jpg" className="img-custom img-fluid img-thumbnail" />
+                <div>
+                        <h1 className="name-div text-center mt-5">{this.state.currentProfile.name}</h1>
+                    </div>
+                    <div className="text-center m-5">
+                        <img src={this.state.currentProfile.imageSrc} className="img-custom img-fluid img-thumbnail" />
                     </div>
         <div>
     
@@ -347,7 +347,7 @@ class Home extends React.Component<{}, IPageState> {
             <div className="col-md-2"/>
         </div>
         <div className="text-center m-5">
-            <a type="button" className="btn btn-custom btn-lg" href="home.html">Take Me Home</a>
+            <a type="button" className="btn btn-custom btn-lg" href="home.html"> TAKE ME HOME <i className="fas fa-caret-right"/></a>
 
         </div>
     </div>
@@ -364,7 +364,7 @@ class Home extends React.Component<{}, IPageState> {
                         <div className="header-div">
                             <h1>Finna Get Lit! </h1>
                         </div>
-                        <div className="row">
+                        <div className="row"> 
                             <div className="col-md-3" />
                             <div className="icon-divMain col-md-6">
                                 <i className="fab fa-gripfire" />
@@ -375,7 +375,7 @@ class Home extends React.Component<{}, IPageState> {
                             <div className="col-md-3" />
                             <div className="main-div col-md-6 ">
                                 <a type="button" className="btn btn-default btn-lg btn-block" onClick={this.goToQuiz}>Take Quiz</a>
-                                <a type="button" className="btn btn-default btn-lg btn-block">View Stats</a>
+                                {/* <a type="button" className="btn btn-default btn-lg btn-block">View Stats</a> */}
                             </div>
                             <div className="col-md-3" />
                         </div>
